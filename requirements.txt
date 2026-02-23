@@ -23,7 +23,6 @@ aiogram==3.17.0
 # Testing
 pytest==8.3.4
 pytest-asyncio==0.25.3
-httpx>=0.28.1
 
 # Async task queue
 celery[redis]==5.4.0

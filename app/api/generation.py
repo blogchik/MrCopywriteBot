@@ -19,7 +19,7 @@ router = APIRouter(tags=["generation"])
 @router.post("/generate", response_model=GenerationRead, status_code=status.HTTP_201_CREATED)
 async def create_generation(
     payload: GenerationCreate,
-    user_id: uuid.UUID | None = None,
+    user_id: uuid.UUID,
     db: AsyncSession = Depends(get_db),
 ) -> Generation:
     """Create a new copy generation (placeholder – LLM call to be wired later)."""
@@ -68,7 +68,7 @@ async def get_generation(
 
 @router.get("/history", response_model=list[GenerationRead])
 async def list_history(
-    user_id: uuid.UUID | None = None,
+    user_id: uuid.UUID,
     db: AsyncSession = Depends(get_db),
 ) -> list[Generation]:
     result = await db.execute(
